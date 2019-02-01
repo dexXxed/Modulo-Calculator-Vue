@@ -1,0 +1,1 @@
+var check=!0;function myFunction(){check?(document.getElementById("moon").setAttribute("class","style1"),check=!1):(document.getElementById("moon").removeAttribute("class","style1"),check=!0)}

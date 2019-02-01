@@ -7,20 +7,8 @@
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link rel="stylesheet" href="css/style.css">
-      <link href="css/font.css" rel="stylesheet">
-      <script src="js/vue.min.js"></script>
-      <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-
-      <script src="js/vue-clipboards.js"></script>
+      <link rel="stylesheet" href="css/font.css">
       <title>Modulo Calculator by dexXxed</title>
-      <style>
-         .style1 {
-         background-color: #1d1d21 !important;
-         }
-         .style2 {
-         color: gray;
-         }
-      </style>
    </head>
    <body id="moon">
       <div id="app">
@@ -62,24 +50,23 @@
          </div>
          <!-- here -->
          <div class="container" v-if="help">
-                <h1 v-bind:class="{ 'text-secondary': isTextSecondary }">How you can help the project?</h1>
-                <ul>
-                     <li v-bind:class="{ 'text-secondary': isTextSecondary }"><p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Firstly</strong>, you can write your user experience of using this app in Google Play comments</p>
-                     <li v-bind:class="{ 'text-secondary': isTextSecondary }"><p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Secondly</strong>, you can write me an e-mail <a href="mailto:dexxxed.app@gmail.com" class="text-decoration-none">(dexxxed.app@gmail.com)</a> with your propositions of improvements</p>
-                     <li v-bind:class="{ 'text-secondary': isTextSecondary }"><p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Thirdly</strong>, you can just buy me a coffee by clicking the button below</p></li>
-               </ul>
-               <div class="d-flex justify-content-center">
-                  <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/NYEcOkj9s">
-                     <img src="img/BMC-btn-logo.svg" alt="Buy me a coffee">
-                     <span style="margin-left:5px">Buy me a coffee</span>
-                  </a>
-               </div>
-      
+            <h1 v-bind:class="{ 'text-secondary': isTextSecondary }">How you can help the project?</h1>
+            <ul>
+               <li v-bind:class="{ 'text-secondary': isTextSecondary }">
+                  <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Firstly</strong>, you can write your user experience of using this app in Google Play comments</p>
+               <li v-bind:class="{ 'text-secondary': isTextSecondary }">
+                  <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Secondly</strong>, you can write me an e-mail <a href="mailto:dexxxed.app@gmail.com" class="text-decoration-none">(dexxxed.app@gmail.com)</a> with your propositions of improvements</p>
+               <li v-bind:class="{ 'text-secondary': isTextSecondary }">
+                  <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Thirdly</strong>, you can just buy me a coffee by clicking the button below</p>
+               </li>
+            </ul>
+            <div class="d-flex justify-content-center">
+               <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/NYEcOkj9s">
+               <img src="img/BMC-btn-logo.svg" alt="Buy me a coffee">
+               <span style="margin-left:5px">Buy me a coffee</span>
+               </a>
+            </div>
          </div>
-
-
-
-
          <div v-if="home">
             <div class="container mt-3">
                <!-- Number Inputs -->
@@ -87,24 +74,25 @@
                   <div class="row">
                      <div class="col">
                         <input v-bind:style="{ backgroundColor: activebackgroundColor }" 
-                               v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" 
-                               id="in1" 
-                               type="tel"
-                               maxlength="14"
-                               oninput="this.value = this.value.replace(/[^-0-9.]/g, ''); 
-                               this.value = this.value.replace(/(\..*)\./g, '$1');
-                               this.value = this.value.replace(/(\-.*)\-/g, '$1');"
-                               v-model.number="firstNumber" class="form-control" placeholder="Enter x">
-
+                           v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" 
+                           id="in1" 
+                           type="tel"
+                           maxlength="14"
+                           oninput="this.value = this.value.replace(/[^-0-9.]/g, ''); 
+                           this.value = this.value.replace(/(\..*)\./g, '$1');
+                           this.value = this.value.replace(/(\-.*)\-/g, '$1');
+                           this.value = this.value.replace(/(\b-)/g, '');"
+                           v-model.number="firstNumber" class="form-control" placeholder="Enter x">
                      </div>
                      <h4 id="modd" v-bind:class="{ 'text-secondary': isTextSecondary }" style="line-height: inherit;">mod</h4>
                      <div class="col">
                         <input type="tel"
-                        maxlength="14"
-                        oninput="this.value = this.value.replace(/[^-0-9.]/g, ''); 
-                        this.value = this.value.replace(/(\..*)\./g, '$1');
-                        this.value = this.value.replace(/(\-.*)\-/g, '$1');"
-                         v-bind:style="{ backgroundColor: activebackgroundColor }" v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" id="in2" type="number" v-model.number="secondNumber" class="form-control" placeholder="Enter y">
+                           maxlength="14"
+                           oninput="this.value = this.value.replace(/[^-0-9.]/g, ''); 
+                           this.value = this.value.replace(/(\..*)\./g, '$1');
+                           this.value = this.value.replace(/(\-.*)\-/g, '$1');
+                           this.value = this.value.replace(/(\b-)/g, '');"
+                           v-bind:style="{ backgroundColor: activebackgroundColor }" v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" id="in2" type="number" v-model.number="secondNumber" class="form-control" placeholder="Enter y">
                      </div>
                   </div>
                </form>
@@ -113,11 +101,10 @@
             <!-- Alert Box -->
             <div class="container mt-3" v-if="secondNumber === 0">
                <div class="alert alert-danger" role="alert">
-                  The divisor (y) must not be 0!
+                  The divisor <a class="text-monospace mb-0 text-decoration-none">(y)</a> must not be <a class="text-monospace mb-0 text-decoration-none">0</a>!
                </div>
             </div>
             <!-- End of Alert Box -->
-            
             <div class="container mt-3" v-if="placeholderValue()">
                <div class="input-group mb-3">
                   <input v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" v-bind:style="{ backgroundColor: activebackgroundColor, color: isColor }" id="txtInputDisabled" type="text" class="form-control" :placeholder="placeholderValue()" disabled aria-describedby="button-addon2">
@@ -129,9 +116,9 @@
             </div>
             <div class="container mt-2" v-if="placeholderValue()">
                <div class="alert text-center alert-black text-secondary" role="alert">
-                     {{ firstNumber }} = {{ secondNumber }} * {{ k }} + {{ thirdNumber }}
+                  {{ firstNumber }} = {{ secondNumber }} * {{ k }} + {{ thirdNumber }}
                </div>
-         </div>
+            </div>
             <transition name="fade">
                <div class="container mt-3" v-if="show">
                   <div v-bind:class="{ 'alert-success': isSuccess, 'alert-dark': isDark }" class="alert" role="alert">
@@ -139,26 +126,11 @@
                   </div>
                </div>
             </transition>
-            
-            
          </div>
-
       </div>
-
+      <script src="js/vue.min.js"></script>
+      <script src="js/vue-clipboards.js"></script>
       <script src="js/script.js"></script>
-      <script> 
-         var check = true;
-            function myFunction()
-               {
-                  if (check){
-                     document.getElementById('moon').setAttribute("class", "style1");
-                     check = false;
-                  }
-                  else {
-                     document.getElementById('moon').removeAttribute("class", "style1");
-                     check = true;
-                  }
-               }
-      </script>
+      <script src="js/scr.js"></script>
    </body>
 </html>
