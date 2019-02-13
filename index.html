@@ -1,136 +1,149 @@
 <!DOCTYPE html>
 <html lang="ru">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <link rel="stylesheet" href="css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/font.css">
-      <title>Modulo Calculator by dexXxed</title>
-   </head>
-   <body id="moon">
-      <div id="app">
-         <div class="container mt-3">
-            <!-- Menu -->
-            <nav class="navbar">
-               <div class="d-flex flex-row">
-                  <button v-on:click="home = true; about = false; help = false;" class="btn btn-outline-primary mr-2">Modulo</button>
-                  <button v-on:click="about = true; home = false; help = false" class="btn btn-outline-success mr-2">About</button>
-                  <button v-on:click="about = false; home = false; help = true" class="btn btn-outline-info mr-2">Help project</button>
-                  <a v-on:click="darkTheme()" v-bind:class="{ active: isActive, style1: isStyle1 }" id="change-moon" role="button" class="btn btn-outline-dark btn-sm" onclick="myFunction()">
-                  <i style="font-size:24px" class="fa">&#xf186;</i>
-                  </a>
-               </div>
-            </nav>
-            <!-- End of Menu -->
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/font.css">
+   <title>Modulo Calculator by dexXxed</title>
+</head>
+<body id="moon">
+<div id="app">
+   <div class="container mt-3">
+      <!-- Menu -->
+      <nav class="navbar">
+         <div class="d-flex flex-row">
+            <button v-on:click="home = true; about = false; help = false;" class="btn btn-outline-primary mr-2">Modulo</button>
+            <button v-on:click="about = true; home = false; help = false" class="btn btn-outline-success mr-2">About</button>
+            <button v-on:click="about = false; home = false; help = true" class="btn btn-outline-info mr-2">Help project</button>
+            <a v-on:click="darkTheme()" v-bind:class="{ active: isActive, style1: isStyle1 }" id="change-moon" role="button" class="btn btn-outline-dark btn-sm" onclick="myFunction()">
+               <i style="font-size:24px" class="fa">&#xf186;</i>
+            </a>
          </div>
-         <!-- here -->
-         <div v-if="about">
-            <div class="container mt-3">
-               <div class="alert alert-success" role="alert">
-                  <h4 class="alert-heading">Modulo operation</h4>
-                  <p class="mb-0">In computing, the modulo operation finds the remainder after division of one number by another (sometimes called modulus).</p>
-                  <a target="_blank" class="text-decoration-none mb-0 mt-0" href="https://en.wikipedia.org/wiki/Modulo_operation">More info</a>
-                  <hr class="mt-1">
-                  <p class="mb-0">Shortly can be written as: </p>
-                  <p class="text-monospace mb-0">x mod y = r, (y ≠ 0) </p>
-                  <strong class="mb-0">Where:</strong>
-                  <p class="mb-0"><a class="text-monospace mb-0 text-decoration-none">x</a> - the divident</p>
-                  <p class="mb-0"><a class="text-monospace mb-0 text-decoration-none">y</a> - the divisor</p>
-                  <p class="mb-0"><a class="text-monospace mb-0 text-decoration-none">r</a> - the modulo <a class="text-monospace mb-0 text-decoration-none">(0 ≤ r < |y|)</a></p>
-               </div>
-            </div>
-            <div class="container mt-3">
-               <p class="text-center" v-bind:class="{ 'text-secondary': isTextSecondary }">
-                  Made with <span style="color: #e25555;">&#9829;</span> by <a class="text-reset" target="_blank" href="https://github.com/dexXxed">dexXxed</a>
-               </p>
-            </div>
-         </div>
-         <!-- here -->
-         <div class="container" v-if="help">
-            <h1 v-bind:class="{ 'text-secondary': isTextSecondary }">How you can help the project?</h1>
-            <ul>
-               <li v-bind:class="{ 'text-secondary': isTextSecondary }">
-                  <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Firstly</strong>, you can write your user experience of using this app in Google Play comments</p>
-               <li v-bind:class="{ 'text-secondary': isTextSecondary }">
-                  <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Secondly</strong>, you can write me an e-mail <a href="mailto:dexxxed.app@gmail.com" class="text-decoration-none">(dexxxed.app@gmail.com)</a> with your propositions of improvements</p>
-               <li v-bind:class="{ 'text-secondary': isTextSecondary }">
-                  <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Thirdly</strong>, you can just buy me a coffee by clicking the button below</p>
-               </li>
-            </ul>
-            <div class="d-flex justify-content-center">
-               <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/NYEcOkj9s">
-               <img src="img/BMC-btn-logo.svg" alt="Buy me a coffee">
-               <span style="margin-left:5px">Buy me a coffee</span>
-               </a>
-            </div>
-         </div>
-         <div v-if="home">
-            <div class="container mt-3">
-               <!-- Number Inputs -->
-               <form>
-                  <div class="row">
-                     <div class="col">
-                        <input v-bind:style="{ backgroundColor: activebackgroundColor }" 
-                           v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" 
-                           id="in1" 
-                           type="tel"
-                           maxlength="14"
-                           oninput="this.value = this.value.replace(/[^-0-9.]/g, ''); 
-                           this.value = this.value.replace(/(\..*)\./g, '$1');
-                           this.value = this.value.replace(/(\-.*)\-/g, '$1');
-                           this.value = this.value.replace(/(\b-)/g, '');"
-                           v-model.number="firstNumber" class="form-control" placeholder="Enter x">
-                     </div>
-                     <h4 id="modd" v-bind:class="{ 'text-secondary': isTextSecondary }" style="line-height: inherit;">mod</h4>
-                     <div class="col">
-                        <input type="tel"
-                           maxlength="14"
-                           oninput="this.value = this.value.replace(/[^-0-9.]/g, ''); 
-                           this.value = this.value.replace(/(\..*)\./g, '$1');
-                           this.value = this.value.replace(/(\-.*)\-/g, '$1');
-                           this.value = this.value.replace(/(\b-)/g, '');"
-                           v-bind:style="{ backgroundColor: activebackgroundColor }" v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" id="in2" type="number" v-model.number="secondNumber" class="form-control" placeholder="Enter y">
-                     </div>
-                  </div>
-               </form>
-               <!-- End of Number Inputs -->
-            </div>
-            <!-- Alert Box -->
-            <div class="container mt-3" v-if="secondNumber === 0">
-               <div class="alert alert-danger" role="alert">
-                  The divisor <a class="text-monospace mb-0 text-decoration-none">(y)</a> must not be <a class="text-monospace mb-0 text-decoration-none">0</a>!
-               </div>
-            </div>
-            <!-- End of Alert Box -->
-            <div class="container mt-3" v-if="placeholderValue()">
-               <div class="input-group mb-3">
-                  <input v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" v-bind:style="{ backgroundColor: activebackgroundColor, color: isColor }" id="txtInputDisabled" type="text" class="form-control" :placeholder="placeholderValue()" disabled aria-describedby="button-addon2">
-                  <div class="input-group-append">
-                     <button id="btnCopy" class="btn btn-outline-secondary" type="button" v-clipboard:copy="placeholderValue()"
-                        v-clipboard:success="onCopy">Copy</button>
-                  </div>
-               </div>
-            </div>
-            <div class="container mt-2" v-if="placeholderValue()">
-               <div class="alert text-center alert-black text-secondary" role="alert">
-                  {{ firstNumber }} = {{ secondNumber }} * {{ k }} + {{ thirdNumber }}
-               </div>
-            </div>
-            <transition name="fade">
-               <div class="container mt-3" v-if="show">
-                  <div v-bind:class="{ 'alert-success': isSuccess, 'alert-dark': isDark }" class="alert" role="alert">
-                     Number was copied!
-                  </div>
-               </div>
-            </transition>
+      </nav>
+      <!-- End of Menu -->
+   </div>
+   <!-- here -->
+   <div v-if="about">
+      <div class="container mt-3">
+         <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Modulo operation</h4>
+            <p class="mb-0">In computing, the modulo operation finds the remainder after division of one number by another (sometimes called modulus).</p>
+            <a target="_blank" class="text-decoration-none mb-0 mt-0" href="https://en.wikipedia.org/wiki/Modulo_operation">More info</a>
+            <hr class="mt-1">
+            <p class="mb-0">Shortly can be written as: </p>
+            <p class="text-monospace mb-0">x mod y = r, (y ≠ 0) </p>
+            <strong class="mb-0">Where:</strong>
+            <p class="mb-0"><a class="text-monospace mb-0 text-decoration-none">x</a> - the divident</p>
+            <p class="mb-0"><a class="text-monospace mb-0 text-decoration-none">y</a> - the divisor</p>
+            <p class="mb-0"><a class="text-monospace mb-0 text-decoration-none">r</a> - the modulo <a class="text-monospace mb-0 text-decoration-none">(0 ≤ r < |y|)</a></p>
          </div>
       </div>
-      <script src="js/vue.min.js"></script>
-      <script src="js/vue-clipboards.js"></script>
-      <script src="js/script.js"></script>
-      <script src="js/scr.js"></script>
-   </body>
+      <div class="container mt-3">
+         <p class="text-center" v-bind:class="{ 'text-secondary': isTextSecondary }">
+            Made with <span style="color: #e25555;">&#9829;</span> by <a class="text-reset" target="_blank" href="https://github.com/dexXxed">dexXxed</a>
+         </p>
+      </div>
+   </div>
+   <!-- here -->
+   <div class="container" v-if="help">
+      <h1 v-bind:class="{ 'text-secondary': isTextSecondary }">How can you help the project?</h1>
+      <ul>
+         <li v-bind:class="{ 'text-secondary': isTextSecondary }">
+            <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Firstly</strong>, write your experience of using this app in Google Play comments</p>
+         <li v-bind:class="{ 'text-secondary': isTextSecondary }">
+            <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Secondly</strong>, write me an e-mail <a href="mailto:dexxxed.app@gmail.com" class="text-decoration-none">(dexxxed.app@gmail.com)</a> with your improvements propositions</p>
+         <li v-bind:class="{ 'text-secondary': isTextSecondary }">
+            <p v-bind:class="{ 'text-secondary': isTextSecondary }"><strong>Thirdly</strong>, you can simply buy me a coffee by clicking the button below 😉</p>
+         </li>
+      </ul>
+      <div class="d-flex justify-content-center mb-5">
+         <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/NYEcOkj9s">
+            <img src="img/BMC-btn-logo.svg" alt="Buy me a coffee">
+            <span style="margin-left:5px">Buy me a coffee</span>
+         </a>
+      </div>
+   </div>
+   <div v-if="home">
+      <div class="container mt-3">
+         <!-- Number Inputs -->
+         <form>
+            <div class="row">
+               <div class="col">
+                  <input v-bind:style="{ backgroundColor: activebackgroundColor }"
+                         v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }"
+                         id="in1"
+                         type="tel"
+                         maxlength="12"
+                         oninput="this.value = this.value.replace(/[^-0-9.]/g, '');
+                           this.value = this.value.replace(/(\..*)\./g, '$1');
+                           this.value = this.value.replace(/(\-.*)\-/g, '$1');
+                           this.value = this.value.replace(/(\b-)/g, '');
+                           this.value = this.value.replace(/(\.)\d{4,666}$/g, '.999')
+                           this.value = this.value.replace(/(-\.)/g, '-')
+                           this.value = this.value.replace(/(.-)/g, '.')
+                           this.value = this.value.replace(/^\./g, '')
+                           this.value = this.value.replace(/^(0{2,666})/g, '0')
+                           this.value = this.value.replace(/^-(0{2,666})/g, '-0')"
+                         v-model.number="firstNumber" class="form-control" placeholder="Enter x">
+               </div>
+               <h4 id="modd" v-bind:class="{ 'text-secondary': isTextSecondary }" style="line-height: inherit;">mod</h4>
+               <div class="col">
+                  <input type="tel"
+                         maxlength="12"
+                         oninput="this.value = this.value.replace(/[^-0-9.]/g, '');
+                           this.value = this.value.replace(/(\..*)\./g, '$1');
+                           this.value = this.value.replace(/(\-.*)\-/g, '$1');
+                           this.value = this.value.replace(/(\b-)/g, '');
+                           this.value = this.value.replace(/(\.)\d{4,666}$/g, '.999')
+                           this.value = this.value.replace(/(-\.)/g, '-')
+                           this.value = this.value.replace(/(.-)/g, '.')
+                           this.value = this.value.replace(/^\./g, '')
+                           this.value = this.value.replace(/^(0{2,666})/g, '0')
+                           this.value = this.value.replace(/^-(0{2,666})/g, '-0')"
+                         v-bind:style="{ backgroundColor: activebackgroundColor }" v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" id="in2" type="number" v-model.number="secondNumber" class="form-control" placeholder="Enter y">
+               </div>
+            </div>
+         </form>
+         <!-- End of Number Inputs -->
+      </div>
+      <!-- Alert Box -->
+      <div class="container mt-3" v-if="secondNumber === 0">
+         <div class="alert alert-danger" role="alert">
+            The divisor <a class="text-monospace mb-0 text-decoration-none">(y)</a> must not be <a class="text-monospace mb-0 text-decoration-none">0</a>!
+         </div>
+      </div>
+      <!-- End of Alert Box -->
+      <div class="container mt-3" v-if="placeholderValue()">
+         <div class="input-group mb-3">
+            <input v-bind:class="{ border: isBorder, 'border-dark': isBorderDark }" v-bind:style="{ backgroundColor: activebackgroundColor, color: isColor }" id="txtInputDisabled" type="text" class="form-control" :placeholder="placeholderValue()" disabled aria-describedby="button-addon2">
+            <div class="input-group-append">
+               <button id="btnCopy" class="btn btn-outline-secondary" type="button" v-clipboard:copy="placeholderValue()"
+                       v-clipboard:success="onCopy">Copy</button>
+            </div>
+         </div>
+      </div>
+      <div class="container mt-2" v-if="placeholderValue()">
+         <div class="alert text-center alert-black text-secondary" role="alert">
+            {{ firstNumber.toLocaleString() }} = {{ secondNumber.toLocaleString() }} * {{ k.toLocaleString() }} + {{ thirdNumber.toLocaleString() }}
+         </div>
+
+      </div>
+      <transition name="fade">
+         <div class="container mt-3" v-if="show">
+            <div v-bind:class="{ 'alert-success': isSuccess, 'alert-dark': isDark }" class="alert" role="alert">
+               Number was copied!
+            </div>
+         </div>
+      </transition>
+   </div>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-clipboards.js"></script>
+<script src="js/script.js"></script>
+<script src="js/scr.js"></script>
+</body>
 </html>
