@@ -18,7 +18,7 @@
          <div class="d-flex flex-row">
             <button v-on:click="home = true; about = false; help = false;" class="btn btn-outline-primary mr-2">Modulo</button>
             <button v-on:click="about = true; home = false; help = false" class="btn btn-outline-success mr-2">About</button>
-            <button v-on:click="about = false; home = false; help = true" class="btn btn-outline-info mr-2">Help project</button>
+            <button v-on:click="about = false; home = false; help = true" class="btn btn-outline-info mr-2">Help</button>
             <a v-on:click="darkTheme()" v-bind:class="{ active: isActive, style1: isStyle1 }" id="change-moon" role="button" class="btn btn-outline-dark btn-sm" onclick="myFunction()">
                <i style="font-size:24px" class="fa">&#xf186;</i>
             </a>
@@ -33,7 +33,7 @@
             <h4 class="alert-heading">Modulo operation</h4>
             <p class="mb-0">In computing, the modulo operation finds the remainder after division of one number by another (sometimes called modulus).</p>
             <a target="_blank" class="text-decoration-none mb-0 mt-0" href="https://en.wikipedia.org/wiki/Modulo_operation">More info</a>
-            <hr class="mt-1">
+            <hr class="mt-1 mb-1">
             <p class="mb-0">Shortly can be written as: </p>
             <p class="text-monospace mb-0">x mod y = r, (y ≠ 0) </p>
             <strong class="mb-0">Where:</strong>
